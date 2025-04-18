@@ -1,0 +1,42 @@
+<h1>Dragon Ball </h1>
+<hr/>
+<section class="row">
+    <div class="col-12 col-sm-6">
+        <h3>Agregar {{name()}}</h3>
+        <input type="text" class="form-control" placeholder="nombre"
+            [value]="name()"
+            (change)="name.set(txtname.value)"
+            (input)="name.set(txtname.value)"
+            #txtname
+        >
+        <h3>{{power()}}</h3>
+        <input type="number" class="form-control mt-2" placeholder="poder"
+            [value]="power()" 
+            (change)="power.set(txtpower.valueAsNumber)"
+            (input)="power.set(txtpower.valueAsNumber)"
+            #txtpower
+        >
+        <button (click)="addCharacter()" class="mt-2 btn btn-primary">Agregar</button>
+    </div>
+
+    <div class="col-12 col-sm-6">
+        <h3>Listado Fuertes</h3>
+        <ul>
+            @for (individuo of characters(); track individuo.id ; let idx =$index) {
+                @if(individuo.power>500){
+                    <li>
+                        <span>{{idx + 1 }} - {{individuo.name}}</span>
+                        <strong 
+                        [class.text-danger]="individuo.power > 9000"
+                        [class.text-primary]="individuo.power < 9000"
+                            > ({{individuo.power}})</strong>
+                    </li>
+                }
+                @else{
+                    <li><strong>Aqui no vale la pena ver nada</strong></li>
+                }
+            }
+        </ul>
+
+    </div>
+</section>
