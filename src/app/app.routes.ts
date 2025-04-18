@@ -12,5 +12,10 @@ export const routes: Routes = [
     {
         path: 'hero',
         component: HeroPageComponent,
+    },
+    //redirecciona a una pagina por defecto
+    {
+        path:'**',
+        redirectTo:'',
     }
 ];
