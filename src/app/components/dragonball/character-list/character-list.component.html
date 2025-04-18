@@ -1,0 +1,18 @@
+<h3>{{listName()}}</h3>
+<h3>Listado Fuertes</h3>
+<ul>
+    @for (individuo of characters(); track individuo.id ; let idx =$index) {
+        @if(individuo.power>500){
+            <li>
+                <span>{{idx + 1 }} - {{individuo.name}}</span>
+                <strong 
+                [class.text-danger]="individuo.power > 9000"
+                [class.text-primary]="individuo.power < 9000"
+                    > ({{individuo.power}})</strong>
+            </li>
+        }
+        @else{
+            <li><strong>Aqui no vale la pena ver nada</strong></li>
+        }
+    }
+</ul>
